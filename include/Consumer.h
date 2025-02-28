@@ -2,13 +2,16 @@
 #define CONSUMER_H
 
 #include "ThreadSafeQueue.h"
+#include <atomic>
 #include <chrono>
 #include <iostream>
 #include <thread>
 
+extern std::atomic<bool> g_done;
+
 void consumer(ThreadSafeQueue<double>& priceQueue)
 {
-    while (true)
+    while (!g_done.load())
     {
         double price = priceQueue.pop();
         std::cout << "Consumed: " << price << std::endl;
