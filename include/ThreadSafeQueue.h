@@ -28,6 +28,8 @@ public:
         return value;
     }
 
+    void notify_all() { m_conditionVariable.notify_all(); }
+
 private:
     std::queue<T>           m_queue;
     mutable std::mutex      m_mutex;
