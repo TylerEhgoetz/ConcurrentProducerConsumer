@@ -9,6 +9,9 @@ template <typename T>
 class ThreadSafeQueue
 {
 public:
+    ThreadSafeQueue()
+        : m_queue(), m_mutex(), m_conditionVariable()
+    {}
     void push(const T& value)
     {
         std::lock_guard<std::mutex> lock(m_mutex);
