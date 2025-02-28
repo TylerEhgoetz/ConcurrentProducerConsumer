@@ -12,7 +12,7 @@ void producer(ThreadSafeQueue<double>& priceQueue)
     while (true)
     {
         // Generate a random price
-        double price = Random::get(0.0, 10000.0);
+        double price = Random::get<double>(0.0, 10000.0);
         priceQueue.push(price);
         std::cout << "Produced: " << price << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(300)
